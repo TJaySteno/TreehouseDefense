@@ -46,13 +46,13 @@
 			{
 				Console.WriteLine(ex.Message);
 			}
-			catch (TreehouseDefenseException)
-			{
-				Console.WriteLine("Unhandled TreehouseDefenseException");
-			}
 			catch (OnPathException)
 			{
 				Console.WriteLine("Unhandled OnPathException");
+			}
+			catch (TreehouseDefenseException)
+			{
+				Console.WriteLine("Unhandled TreehouseDefenseException");
 			}
 			catch (Exception ex)
 			{

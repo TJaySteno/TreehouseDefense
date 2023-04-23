@@ -13,7 +13,7 @@
 		}
 	}
 
-	class  OutOfBoundsException : TreehouseDefenseException
+	class OutOfBoundsException : TreehouseDefenseException
 	{
 		public OutOfBoundsException()
 		{
@@ -21,6 +21,19 @@
 		}
 		
 		public OutOfBoundsException(string message) : base(message)
+		{
+
+		}
+	}
+
+	class OnPathException : TreehouseDefenseException
+	{
+		public OnPathException()
+		{
+
+		}
+
+		public OnPathException(string message) : base(message)
 		{
 
 		}

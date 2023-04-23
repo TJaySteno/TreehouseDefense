@@ -19,7 +19,8 @@ namespace TreehouseDefense
 
 		public bool OnPath(Point point)
 		{
-			return _path.Find(point) != null;
+			return true;
+				// _path.Find(point) != null;
 		}
 	}
 }

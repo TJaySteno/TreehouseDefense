@@ -4,14 +4,16 @@
 	{
 		private readonly MapLocation _location;
 
-		public Tower(MapLocation location)
+		public Tower(Path path)
 		{
-			if (location.OnPath(this))
+			/*
+			if (path.OnPath(this))
 			{
 				throw new OnPathsException($"{x},{y} is not on the map. (Map: {myMap.Width},{myMap.Height})");
 			}
 
 			_location = location;
+			*/
 		}
 	}
 }
