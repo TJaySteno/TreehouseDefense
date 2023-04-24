@@ -2,12 +2,14 @@
 {
 	class MapLocation : Point
 	{
-		public MapLocation(int x, int y, Map myMap) : base (x, y)
+		public MapLocation(int x, int y, Map map) : base (x, y)
 		{
-			if (!myMap.OnMap(this))
+			if (!map.OnMap(this))
 			{
-				throw new OutOfBoundsException($"{x},{y} is not on the map. (Map: {myMap.Width},{myMap.Height})");
+				throw new OutOfBoundsException($"{x},{y} is not on the map. (Map: {map.Width},{map.Height})");
 			}
 		}
+
+		public bool InRangeOf(MapLocation location, int range) => DistanceTo(location) <= range;
 	}
 }

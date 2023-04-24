@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TreehouseDefense
 {
@@ -10,17 +11,13 @@ namespace TreehouseDefense
 
 		public Path(MapLocation[] path) => _path = path;
 
-		public MapLocation GetLocationAt(int pathStep)
+		public MapLocation? GetLocationAt(int pathStep)
 		{
 			return (pathStep < _path.Length)
 				? _path[pathStep]
 				: null;
 		}
 
-		public bool OnPath(Point point)
-		{
-			return true;
-				// _path.Find(point) != null;
-		}
+		public bool OnPath(Point point) => _path.Contains(point);
 	}
 }

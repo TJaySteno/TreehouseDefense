@@ -4,51 +4,53 @@
 	{
 		public static void Main()
 		{
-			Map myMap = new Map(8,5);
-
-			/* ~~ INHERITENCE ~~
-			Point point1 = new Point(4, 2);
-			Point point2 = new MapLocation(4, 3);
-			// MapLocation point3 = new Point(4, 2);
-				// This throws errors
-					// 
-			MapLocation point4 = new MapLocation(4, 5);
-			
-			Console.WriteLine(myMap.OnMap(point1));
-			Console.WriteLine(point1.DistanceTo(5,5));
-			Console.WriteLine(point4.DistanceTo(point2));
-			
-			Console.WriteLine(point1 is Point);
-			Console.WriteLine(point4 is Point);
-			Console.WriteLine(point1 is MapLocation);
-			Console.WriteLine(point4 is MapLocation);
-			*/
+			Map map = new Map(8,5);
 
 			try
 			{
 				Path path = new Path(
 					new[] {
-						new MapLocation(0,2,myMap),
-						new MapLocation(1,2,myMap),
-						new MapLocation(2,2,myMap),
-						new MapLocation(3,2,myMap),
-						new MapLocation(4,2,myMap),
-						new MapLocation(5,2,myMap),
-						new MapLocation(6,2,myMap),
-						new MapLocation(7,2,myMap)
+						new MapLocation(0,2,map),
+						new MapLocation(1,2,map),
+						new MapLocation(2,2,map),
+						new MapLocation(3,2,map),
+						new MapLocation(4,2,map),
+						new MapLocation(5,2,map),
+						new MapLocation(6,2,map),
+						new MapLocation(7,2,map)
 					}
 				);
 
-				Invader invader = new Invader(path);
-				MapLocation location = new MapLocation(0,0,myMap);
+				Invader[] invaders = {
+					new Invader(path),
+					new Invader(path),
+					new Invader(path),
+					new Invader(path),
+					new Invader(path),
+					new Invader(path)
+				};
+
+				Tower[] towers = {
+					new Tower (new MapLocation(1,3,map), path),
+					new Tower (new MapLocation(3,3,map), path),
+					new Tower (new MapLocation(4,3,map), path),
+					new Tower (new MapLocation(5,3,map), path)
+				};
+
+				Level level = new Level(invaders);
+				level.Towers = towers;
+
+				bool playerwon = level.Play();
+
+				Console.WriteLine($"Player {(playerwon ? "won" : "lost")}.");
 			}
 			catch (OutOfBoundsException ex)
 			{
 				Console.WriteLine(ex.Message);
 			}
-			catch (OnPathException)
+			catch (OnPathException ex)
 			{
-				Console.WriteLine("Unhandled OnPathException");
+				Console.WriteLine(ex.Message);
 			}
 			catch (TreehouseDefenseException)
 			{
