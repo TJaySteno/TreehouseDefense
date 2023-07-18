@@ -1,6 +1,6 @@
 ﻿namespace TreehouseDefense
 {
-	class TreehouseDefenseException :  Exception
+	class TreehouseDefenseException : Exception
 	{
 		public TreehouseDefenseException()
 		{

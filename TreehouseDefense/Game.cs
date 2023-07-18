@@ -42,7 +42,7 @@
 
 				bool playerwon = level.Play();
 
-				Console.WriteLine($"Player {(playerwon ? "won" : "lost")}.");
+				Console.WriteLine($"Player {(playerwon ? "won! Good job!" : "lost. Friggin loser, get rekt!")}.");
 			}
 			catch (OutOfBoundsException ex)
 			{

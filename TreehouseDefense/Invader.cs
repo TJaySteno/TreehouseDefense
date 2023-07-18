@@ -3,6 +3,7 @@
 	class Invader
 	{
 		private readonly Path _path;
+		
 		private int _pathStep = 0;
 		
 		public MapLocation? Location => _path.GetLocationAt(_pathStep);
