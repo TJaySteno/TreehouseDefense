@@ -4,12 +4,11 @@ namespace TreehouseDefense
 {
 	internal class Tower
 	{
-		private const int _range = 1;
-		private const int _power = 1;
-		private const double _accuracy = 0.75;
-		private readonly MapLocation _location;
+		protected virtual int Range { get; } = 1;
+		protected virtual int Power { get; } = 1;
+		protected virtual double Accuracy { get; } = 0.75;
 
-		private static readonly Random _random = new Random();
+		protected readonly MapLocation _location;
 
 		public Tower(MapLocation location, Path path)
 		{
@@ -23,24 +22,24 @@ namespace TreehouseDefense
 			}
 		}
 
-		public bool IsSuccessfulShot() => _random.NextDouble() < _accuracy;
+		public bool IsSuccessfulShot() => Random.NextDouble() < Accuracy;
 
-		public void FireOnInvaders(Invader[] invaders)
+		public void FireOnInvaders(IInvaderBase[] invaders)
 		{
 
-			foreach (Invader invader in invaders)
+			foreach (IInvaderBase invader in invaders)
 			{
-				if(invader.IsActive && _location.InRangeOf(invader.Location, _range))
+				if(invader.IsActive && _location.InRangeOf(invader.Location, Range))
 				{
 
 					if (IsSuccessfulShot()) {
-						invader.DecreaseHealth(_power);
+						invader.DecreaseHealth(Power);
 						
 						Console.WriteLine("Hit an invader");
 
 						if (invader.IsNeutralized)
 						{
-							Console.WriteLine("Killed an invader");
+							Console.WriteLine($"Killed an invader at {invader.Location}!");
 						}
 					}
 					else

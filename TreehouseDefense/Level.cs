@@ -2,13 +2,13 @@
 {
 	internal class Level
 	{
-		public readonly Invader[] _invaders;
+		public readonly IInvaderBase[] _invaders;
 		private const bool _win = true;
 		private const bool _lose = false;
 
 		public Tower[] Towers { get; set; }
 
-		public Level(Invader[] invaders) => _invaders = invaders;
+		public Level(IInvaderBase[] invaders) => _invaders = invaders;
 
 		// Returns true if the player wins, otherwise returns false
 		public bool Play()
@@ -28,7 +28,7 @@
 
 				// Count and move the invaders that are still active
 				remainingInvaders = 0;
-				foreach(Invader invader in _invaders)
+				foreach(IInvaderBase invader in _invaders)
 				{
 					if(invader.IsActive)
 					{

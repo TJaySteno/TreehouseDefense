@@ -21,13 +21,11 @@
 					}
 				);
 
-				Invader[] invaders = {
-					new Invader(path),
-					new Invader(path),
-					new Invader(path),
-					new Invader(path),
-					new Invader(path),
-					new Invader(path)
+				IInvaderBase[] invaders = {
+					new BasicInvader(path),
+					new ResurrectingInvader(path),
+					new ShieldedInvader(path),
+					new StrongInvader(path)
 				};
 
 				Tower[] towers = {

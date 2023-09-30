@@ -6,7 +6,7 @@
 		{
 			if (!map.OnMap(this))
 			{
-				throw new OutOfBoundsException($"{x},{y} is not on the map. (Map: {map.Width},{map.Height})");
+				throw new OutOfBoundsException(this + " outside the boundaries of the map.");
 			}
 		}
 

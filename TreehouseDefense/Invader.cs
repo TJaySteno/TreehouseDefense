@@ -1,14 +1,15 @@
 ﻿namespace TreehouseDefense
 {
-	class Invader
+	abstract class InvaderBase : IInvaderBase
 	{
 		private readonly Path _path;
-		
 		private int _pathStep = 0;
+
+		protected virtual int StepSize { get; } = 1;
 		
 		public MapLocation? Location => _path.GetLocationAt(_pathStep);
 
-		public int Health { get; private set; } = 2;
+		public abstract int Health { get; protected set; }
 
 		public bool HasScored => _pathStep >= _path.Length;
 
@@ -16,10 +17,10 @@
 
 		public bool IsActive => !(IsNeutralized || HasScored);
 
-		public Invader(Path path) => _path = path;
+		public InvaderBase(Path path) => _path = path;
 
 		public void Move() => _pathStep++;
 
-		public void DecreaseHealth(int factor) => Health -= factor;
+		public virtual void DecreaseHealth(int factor) => Health -= factor;
 	}
 }
